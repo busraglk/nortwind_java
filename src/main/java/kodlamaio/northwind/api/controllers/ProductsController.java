@@ -14,6 +14,7 @@ import kodlamaio.northwind.business.abstracts.ProductService;
 import kodlamaio.northwind.core.utilities.results.DataResult;
 import kodlamaio.northwind.core.utilities.results.Result;
 import kodlamaio.northwind.entities.concretes.Product;
+import kodlamaio.northwind.entities.dtos.ProductWithCategoryDto;
 
 @RestController
 @RequestMapping("/api/products")
@@ -52,15 +53,22 @@ public class ProductsController {
 		return this.productService.getByProductNameContains(productName);
 	}
 	
+	//sayfa sayısı ve kaç tane görünmesi gerektiği
 	@GetMapping("/getAllPage")
 	public DataResult<List<Product>> getAll(int pageNo, int pageSize){
 		return this.productService.getAll(pageNo, pageSize);
 		
 	}
 	
+	//artan veya azalan sıralama
 	@GetMapping("/getAllDesc")
 	public DataResult<List<Product>> getAllSorted() {
 		return this.productService.getAllSorted();
 		
+	}
+	
+	@GetMapping("/getProductWithCategoryDetails")
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails(){		
+		return this.productService.getProductWithCategoryDetails();
 	}
 }
