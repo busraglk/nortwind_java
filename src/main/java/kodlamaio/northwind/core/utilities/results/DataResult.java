@@ -1,4 +1,4 @@
-package kodlamaio.northwind.core.utilies.results;
+package kodlamaio.northwind.core.utilities.results;
 
 public class DataResult<T> extends Result{
 	
